@@ -12,7 +12,8 @@ module.exports = function (grunt) {
 			const v = json.tag_name.replace("gtz","");
 			const current = require("../data/packed/latest.json").version;
 			if(v === current) {
-				grunt.fail.warn("Already up to date");
+				grunt.log.ok("Already up to date, exiting...");
+				process.exit(0);
 				return;
 			}
 			grunt.log.ok('Update found: ' + v);
