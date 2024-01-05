@@ -1,5 +1,8 @@
 name: CI tests
 
+on:
+  workflow_dispatch:
+
 # on:
 #   schedule:
 #     - cron: '20 1,13 * * *'
