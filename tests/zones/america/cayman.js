@@ -9,12 +9,12 @@ exports["America/Cayman"] = {
 	"guess:by:abbr" : helpers.makeTestGuess("America/Cayman", { abbr: true, expect: "America/Panama" }),
 
 	"1890" : helpers.makeTestYear("America/Cayman", [
-		["1890-01-01T05:18:07+00:00", "23:59:59", "LMT", 19088 / 60],
-		["1890-01-01T05:18:08+00:00", "23:58:32", "CMT", 19176 / 60]
+		["1890-01-01T05:25:31+00:00", "23:59:59", "LMT", 19532 / 60],
+		["1890-01-01T05:25:32+00:00", "00:18:22", "KMT", 18430 / 60]
 	]),
 
-	"1908" : helpers.makeTestYear("America/Cayman", [
-		["1908-04-22T05:19:35+00:00", "23:59:59", "CMT", 19176 / 60],
-		["1908-04-22T05:19:36+00:00", "00:19:36", "EST", 300]
+	"1912" : helpers.makeTestYear("America/Cayman", [
+		["1912-02-01T05:07:09+00:00", "23:59:59", "KMT", 18430 / 60],
+		["1912-02-01T05:07:10+00:00", "00:07:10", "EST", 300]
 	])
 };

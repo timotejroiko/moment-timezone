@@ -9,7 +9,7 @@ exports["Pacific/Funafuti"] = {
 	"guess:by:abbr" : helpers.makeTestGuess("Pacific/Funafuti", { abbr: true, expect: "Pacific/Fiji" }),
 
 	"1900" : helpers.makeTestYear("Pacific/Funafuti", [
-		["1900-12-31T12:27:55+00:00", "23:59:59", "LMT", -41524 / 60],
-		["1900-12-31T12:27:56+00:00", "00:27:56", "+12", -720]
+		["1900-12-31T12:03:07+00:00", "23:59:59", "LMT", -43012 / 60],
+		["1900-12-31T12:03:08+00:00", "00:03:08", "+12", -720]
 	])
 };

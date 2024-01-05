@@ -9,8 +9,8 @@ exports["Europe/Ljubljana"] = {
 	"guess:by:abbr" : helpers.makeTestGuess("Europe/Ljubljana", { abbr: true, expect: "Europe/Paris" }),
 
 	"1883" : helpers.makeTestYear("Europe/Ljubljana", [
-		["1883-12-31T22:37:59+00:00", "23:59:59", "LMT", -82],
-		["1883-12-31T22:38:00+00:00", "23:38:00", "CET", -60]
+		["1883-12-31T23:01:55+00:00", "23:59:59", "LMT", -3484 / 60],
+		["1883-12-31T23:01:56+00:00", "00:01:56", "CET", -60]
 	]),
 
 	"1941" : helpers.makeTestYear("Europe/Ljubljana", [
@@ -38,8 +38,8 @@ exports["Europe/Ljubljana"] = {
 	]),
 
 	"1945" : helpers.makeTestYear("Europe/Ljubljana", [
-		["1945-05-08T00:59:59+00:00", "01:59:59", "CET", -60],
-		["1945-05-08T01:00:00+00:00", "03:00:00", "CEST", -120],
+		["1945-04-02T00:59:59+00:00", "01:59:59", "CET", -60],
+		["1945-04-02T01:00:00+00:00", "03:00:00", "CEST", -120],
 		["1945-09-16T00:59:59+00:00", "02:59:59", "CEST", -120],
 		["1945-09-16T01:00:00+00:00", "02:00:00", "CET", -60]
 	]),

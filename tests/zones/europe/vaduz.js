@@ -8,14 +8,9 @@ exports["Europe/Vaduz"] = {
 
 	"guess:by:abbr" : helpers.makeTestGuess("Europe/Vaduz", { abbr: true, expect: "Europe/Paris" }),
 
-	"1853" : helpers.makeTestYear("Europe/Vaduz", [
-		["1853-07-15T23:25:51+00:00", "23:59:59", "LMT", -2048 / 60],
-		["1853-07-15T23:25:52+00:00", "23:55:38", "BMT", -1786 / 60]
-	]),
-
 	"1894" : helpers.makeTestYear("Europe/Vaduz", [
-		["1894-05-31T23:30:13+00:00", "23:59:59", "BMT", -1786 / 60],
-		["1894-05-31T23:30:14+00:00", "00:30:14", "CET", -60]
+		["1894-05-31T23:21:55+00:00", "23:59:59", "LMT", -2284 / 60],
+		["1894-05-31T23:21:56+00:00", "00:21:56", "CET", -60]
 	]),
 
 	"1941" : helpers.makeTestYear("Europe/Vaduz", [
