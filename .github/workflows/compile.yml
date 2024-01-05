@@ -32,9 +32,9 @@ jobs:
         run: echo "RESULT=$(npm run check)" >> $GITHUB_OUTPUT
 
       - name: Update tzdata
-        if: steps.step1.outputs.RESULT == "Update available"
+        if: steps.step1.outputs.RESULT == 'Update available'
         run: npm run compile
 
       - name: Commit changes
-        if: steps.step1.outputs.RESULT == "Update available"
+        if: steps.step1.outputs.RESULT == 'Update available'
         uses: stefanzweifel/git-auto-commit-action@v5
