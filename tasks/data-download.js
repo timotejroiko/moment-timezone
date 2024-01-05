@@ -9,7 +9,7 @@ module.exports = function (grunt) {
 		const done  = this.async();
 
 		fetch("https://api.github.com/repos/JodaOrg/global-tz/releases/latest").then(x => x.json()).then(json => {
-			const v = json.tag_name;
+			const v = json.tag_name.replace("gtz","");
 			const current = require("../data/packed/latest.json").version;
 			if(v === current) {
 				grunt.fail.warn("Already up to date");
