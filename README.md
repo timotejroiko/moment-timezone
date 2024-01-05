@@ -1,4 +1,16 @@
-# [Moment Timezone](http://momentjs.com/timezone/)
+# Moment Timezone GTZ
+
+A fork of [Moment Timezone](http://momentjs.com/timezone/) that uses data files from [Global-TZ](https://github.com/JodaOrg/global-tz) instead of the original IANA tzdata files.
+
+[Global-TZ](https://github.com/JodaOrg/global-tz) is a fork of the original IANA timezone database that reverts controversial changes made by the official maintainers such as the merger of zones that agree since 1970. Such changes have caused the loss of important historical timezone data introducing several problems for many people, including dependents like `Moment Timezone`.
+
+As it stands, the official tzdata files, and by extension Moment Timezone, return incorrect results for many historical dates, for example: `Europe/Stockholm` did not observe DST until 1980, but after said changes, it became an alias for `Europe/Berlin` which observes DTS since the early 1940s, returning wrong results for many dates between those years.
+
+This fork of `Moment Timezone` aims to provide a "historically accurate" version by leveraging the work done by [Global-TZ](https://github.com/JodaOrg/global-tz).
+
+No other changes have been made to the library.
+
+## [Moment Timezone](http://momentjs.com/timezone/)
 
 [![NPM version][npm-version-image]][npm-url]
 [![NPM downloads][npm-downloads-image]][npm-download-url]
