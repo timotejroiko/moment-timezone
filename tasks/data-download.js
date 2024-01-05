@@ -8,13 +8,14 @@ module.exports = function (grunt) {
 		version = version || 'latest';
 		const done  = this.async();
 
-		const check = fetch("https://api.github.com/repos/JodaOrg/global-tz/releases/latest").then(x => x.json()).then(json => {
+		fetch("https://api.github.com/repos/JodaOrg/global-tz/releases/latest").then(x => x.json()).then(json => {
 			const v = json.tag_name;
 			const current = require("../data/packed/latest.json").version;
 			if(v === current) {
 				grunt.fail.warn("Already up to date");
 				return;
 			}
+			grunt.log.ok('Update found: ' + v);
 			var src = `https://github.com/JodaOrg/global-tz/releases/download/${v}/tzcode${v}.tar.gz`,
 			src2 = `https://github.com/JodaOrg/global-tz/releases/download/${v}/tzdata${v}.tar.gz`,
 			curl = path.resolve('temp/curl', version, 'code.tar.gz'),
@@ -26,14 +27,14 @@ module.exports = function (grunt) {
 
 			grunt.log.ok('Downloading ' + src);
 
-			execFile('curl', [src, '-o', curl], function (err) {
+			execFile('curl', ["--location", src, '-o', curl], function (err) {
 				if (err) { throw err; }
 				grunt.log.ok('Downloaded ' + curl + ', extracting . . .');
 				execFile('tar', ['-xzf', curl], { cwd: dest }, function (err) {
 					if (err) { throw err; }
 
 					grunt.log.ok('Extracted ' + dest);
-					execFile('curl', [src2, '-o', curl2], function (err) {
+					execFile('curl', ["--location", src2, '-o', curl2], function (err) {
 						if (err) { throw err; }
 						grunt.log.ok('Downloaded ' + curl2 + ', extracting . . .');
 						execFile('tar', ['-xzf', curl2], { cwd: dest }, function (err) {
