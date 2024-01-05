@@ -1,0 +1,29 @@
+name: CI tests
+
+# on:
+#   schedule:
+#     - cron: '20 1,13 * * *'
+
+jobs:
+  test:
+    name: Update tzdata
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use Node.js latest
+        uses: actions/setup-node@v3
+        with:
+          node-version: latest
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm run compile
+
+      - uses: stefanzweifel/git-auto-commit-action@v5

@@ -23,7 +23,7 @@ module.exports = function (grunt) {
 		}
 
 		// Allow using custom zdump binaries
-		var zdumpBinary = 'zdump',
+		var zdumpBinary = path.resolve('temp/download', version, 'zdump'),
 			zdumpPathOption = grunt.option('zdump-path');
 		if (zdumpPathOption && grunt.file.exists(zdumpPathOption)) {
 			zdumpBinary = zdumpPathOption;

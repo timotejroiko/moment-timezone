@@ -14,7 +14,7 @@ module.exports = function (grunt) {
 		grunt.file.mkdir(dest);
 
 		// Allow using custom zic binaries
-		var zicBinary = 'zic',
+		var zicBinary = path.resolve('temp/download', version, 'zic'),
 			zicPathOption = grunt.option('zic-path');
 		if (zicPathOption && grunt.file.exists(zicPathOption)) {
 			zicBinary = zicPathOption;
