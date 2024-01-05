@@ -8,7 +8,9 @@ As it stands, the official tzdata files, and by extension Moment Timezone, retur
 
 This fork of `Moment Timezone` aims to provide a "historically accurate" version by leveraging the work done by [Global-TZ](https://github.com/JodaOrg/global-tz).
 
-No other changes have been made to the library.
+Use with `npm i timotejroiko/moment-timezone`.
+
+No other changes have been made to the library but its still highly experimental and should be used with caution.
 
 ## [Moment Timezone](http://momentjs.com/timezone/)
 
