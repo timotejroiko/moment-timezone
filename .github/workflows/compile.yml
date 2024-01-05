@@ -29,7 +29,7 @@ jobs:
 
       - id: step1
         name: Check for updates
-        run: echo "RESULT=$(npm run check)" >> $GITHUB_OUTPUT
+        run: echo "RESULT=$(npm run check --silent)" >> $GITHUB_OUTPUT
 
       - name: Update tzdata
         if: steps.step1.outputs.RESULT == 'Update available'
