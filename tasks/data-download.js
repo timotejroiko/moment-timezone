@@ -9,7 +9,7 @@ module.exports = function (grunt) {
 		const done  = this.async();
 
 		fetch("https://api.github.com/repos/JodaOrg/global-tz/releases/latest").then(x => x.json()).then(json => {
-			const v = json.tag_name.replace("gtz","");
+			const v = json.tag_name;
 			var src = `https://github.com/JodaOrg/global-tz/releases/download/${v}/tzcode${v}.tar.gz`,
 			src2 = `https://github.com/JodaOrg/global-tz/releases/download/${v}/tzdata${v}.tar.gz`,
 			curl = path.resolve('temp/curl', version, 'code.tar.gz'),
