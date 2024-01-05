@@ -51,6 +51,7 @@
 	},
 	"scripts": {
 		"test": "grunt",
-		"compile": "grunt data"
+		"compile": "grunt data",
+		"check": "node scripts/check.js"
 	}
 }

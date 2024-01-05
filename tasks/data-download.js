@@ -10,13 +10,6 @@ module.exports = function (grunt) {
 
 		fetch("https://api.github.com/repos/JodaOrg/global-tz/releases/latest").then(x => x.json()).then(json => {
 			const v = json.tag_name.replace("gtz","");
-			const current = require("../data/packed/latest.json").version;
-			if(v === current) {
-				grunt.log.ok("Already up to date, exiting...");
-				process.exit(0);
-				return;
-			}
-			grunt.log.ok('Update found: ' + v);
 			var src = `https://github.com/JodaOrg/global-tz/releases/download/${v}/tzcode${v}.tar.gz`,
 			src2 = `https://github.com/JodaOrg/global-tz/releases/download/${v}/tzdata${v}.tar.gz`,
 			curl = path.resolve('temp/curl', version, 'code.tar.gz'),
