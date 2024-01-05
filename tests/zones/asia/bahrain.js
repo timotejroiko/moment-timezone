@@ -8,9 +8,14 @@ exports["Asia/Bahrain"] = {
 
 	"guess:by:abbr" : helpers.makeTestGuess("Asia/Bahrain", { abbr: true, expect: "Europe/Moscow" }),
 
-	"1919" : helpers.makeTestYear("Asia/Bahrain", [
-		["1919-12-31T20:33:51+00:00", "23:59:59", "LMT", -12368 / 60],
-		["1919-12-31T20:33:52+00:00", "00:33:52", "+04", -240]
+	"1941" : helpers.makeTestYear("Asia/Bahrain", [
+		["1941-07-19T20:37:39+00:00", "23:59:59", "LMT", -12140 / 60],
+		["1941-07-19T20:37:40+00:00", "00:07:40", "+0330", -210]
+	]),
+
+	"1943" : helpers.makeTestYear("Asia/Bahrain", [
+		["1943-12-31T20:29:59+00:00", "23:59:59", "+0330", -210],
+		["1943-12-31T20:30:00+00:00", "00:30:00", "+04", -240]
 	]),
 
 	"1972" : helpers.makeTestYear("Asia/Bahrain", [

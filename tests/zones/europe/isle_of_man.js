@@ -8,9 +8,9 @@ exports["Europe/Isle_of_Man"] = {
 
 	"guess:by:abbr" : helpers.makeTestGuess("Europe/Isle_of_Man", { abbr: true, expect: "Europe/London" }),
 
-	"1847" : helpers.makeTestYear("Europe/Isle_of_Man", [
-		["1847-12-01T00:01:14+00:00", "23:59:59", "LMT", 75 / 60],
-		["1847-12-01T00:01:15+00:00", "00:01:15", "GMT", 0]
+	"1883" : helpers.makeTestYear("Europe/Isle_of_Man", [
+		["1883-03-30T00:17:54+00:00", "23:59:59", "LMT", 1075 / 60],
+		["1883-03-30T00:17:55+00:00", "00:17:55", "GMT", 0]
 	]),
 
 	"1916" : helpers.makeTestYear("Europe/Isle_of_Man", [

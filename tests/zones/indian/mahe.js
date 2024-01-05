@@ -8,8 +8,8 @@ exports["Indian/Mahe"] = {
 
 	"guess:by:abbr" : helpers.makeTestGuess("Indian/Mahe", { abbr: true, expect: "Asia/Dubai" }),
 
-	"1919" : helpers.makeTestYear("Indian/Mahe", [
-		["1919-12-31T20:18:47+00:00", "23:59:59", "LMT", -13272 / 60],
-		["1919-12-31T20:18:48+00:00", "00:18:48", "+04", -240]
+	"1906" : helpers.makeTestYear("Indian/Mahe", [
+		["1906-12-31T20:18:11+00:00", "23:59:59", "LMT", -13308 / 60],
+		["1906-12-31T20:18:12+00:00", "00:18:12", "+04", -240]
 	])
 };

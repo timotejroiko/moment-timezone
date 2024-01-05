@@ -8,8 +8,18 @@ exports["Africa/Blantyre"] = {
 
 	"guess:by:abbr" : helpers.makeTestGuess("Africa/Blantyre", { abbr: true, expect: "Africa/Khartoum" }),
 
-	"1903" : helpers.makeTestYear("Africa/Blantyre", [
-		["1903-02-28T21:49:39+00:00", "23:59:59", "LMT", -7820 / 60],
-		["1903-02-28T21:49:40+00:00", "23:49:40", "CAT", -120]
+	"1911" : helpers.makeTestYear("Africa/Blantyre", [
+		["1911-07-23T21:39:59+00:00", "23:59:59", "LMT", -140],
+		["1911-07-23T21:40:00+00:00", "00:01:10", "ZMT", -8470 / 60]
+	]),
+
+	"1914" : helpers.makeTestYear("Africa/Blantyre", [
+		["1914-06-29T21:38:49+00:00", "23:59:59", "ZMT", -8470 / 60],
+		["1914-06-29T21:38:50+00:00", "23:59:50", "ZMT", -141]
+	]),
+
+	"1925" : helpers.makeTestYear("Africa/Blantyre", [
+		["1925-06-30T21:38:59+00:00", "23:59:59", "ZMT", -141],
+		["1925-06-30T21:39:00+00:00", "23:39:00", "CAT", -120]
 	])
 };

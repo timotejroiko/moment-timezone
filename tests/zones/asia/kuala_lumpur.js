@@ -9,8 +9,8 @@ exports["Asia/Kuala_Lumpur"] = {
 	"guess:by:abbr" : helpers.makeTestGuess("Asia/Kuala_Lumpur", { abbr: true, expect: "Asia/Manila" }),
 
 	"1900" : helpers.makeTestYear("Asia/Kuala_Lumpur", [
-		["1900-12-31T17:04:34+00:00", "23:59:59", "LMT", -24925 / 60],
-		["1900-12-31T17:04:35+00:00", "00:00:00", "SMT", -24925 / 60]
+		["1900-12-31T17:13:13+00:00", "23:59:59", "LMT", -24406 / 60],
+		["1900-12-31T17:13:14+00:00", "00:08:39", "SMT", -24925 / 60]
 	]),
 
 	"1905" : helpers.makeTestYear("Asia/Kuala_Lumpur", [
