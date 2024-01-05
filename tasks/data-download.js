@@ -6,40 +6,44 @@ var path = require('path'),
 module.exports = function (grunt) {
 	grunt.registerTask('data-download', '1. Download data from iana.org/time-zones.', function (version) {
 		version = version || 'latest';
+		const done  = this.async();
 
-		var done  = this.async(),
-			src   = (version === 'latest' ?
-				'https://data.iana.org/time-zones/tzcode-latest.tar.gz' :
-				'https://data.iana.org/time-zones/releases/tzcode' + version + '.tar.gz'),
-			src2   = (version === 'latest' ?
-			'https://data.iana.org/time-zones/tzdata-latest.tar.gz' :
-			'https://data.iana.org/time-zones/releases/tzdata' + version + '.tar.gz'),
-			curl  = path.resolve('temp/curl', version, 'code.tar.gz'),
-			curl2  = path.resolve('temp/curl', version, 'data.tar.gz'),
-			dest  = path.resolve('temp/download', version);
+		const check = fetch("https://api.github.com/repos/JodaOrg/global-tz/releases/latest").then(x => x.json()).then(json => {
+			const v = json.tag_name;
+			const current = require("../data/packed/latest.json").version;
+			if(v === current) {
+				grunt.fail.warn("Already up to date");
+				return;
+			}
+			var src = `https://github.com/JodaOrg/global-tz/releases/download/${v}/tzcode${v}.tar.gz`,
+			src2 = `https://github.com/JodaOrg/global-tz/releases/download/${v}/tzdata${v}.tar.gz`,
+			curl = path.resolve('temp/curl', version, 'code.tar.gz'),
+			curl2 = path.resolve('temp/curl', version, 'data.tar.gz'),
+			dest = path.resolve('temp/download', version);
 
-		grunt.file.mkdir(path.dirname(curl));
-		grunt.file.mkdir(dest);
+			grunt.file.mkdir(path.dirname(curl));
+			grunt.file.mkdir(dest);
 
-		grunt.log.ok('Downloading ' + src);
+			grunt.log.ok('Downloading ' + src);
 
-		execFile('curl', [src, '-o', curl], function (err) {
-			if (err) { throw err; }
-			grunt.log.ok('Downloaded ' + curl + ', extracting . . .');
-			execFile('tar', ['-xzf', curl], { cwd: dest }, function (err) {
+			execFile('curl', [src, '-o', curl], function (err) {
 				if (err) { throw err; }
-
-				grunt.log.ok('Extracted ' + dest);
-				execFile('curl', [src2, '-o', curl2], function (err) {
+				grunt.log.ok('Downloaded ' + curl + ', extracting . . .');
+				execFile('tar', ['-xzf', curl], { cwd: dest }, function (err) {
 					if (err) { throw err; }
-					grunt.log.ok('Downloaded ' + curl2 + ', extracting . . .');
-					execFile('tar', ['-xzf', curl2], { cwd: dest }, function (err) {
+
+					grunt.log.ok('Extracted ' + dest);
+					execFile('curl', [src2, '-o', curl2], function (err) {
 						if (err) { throw err; }
-						grunt.log.ok('Extracted ' + dest);
-						execFile('make', { cwd: dest }, function (err) {
+						grunt.log.ok('Downloaded ' + curl2 + ', extracting . . .');
+						execFile('tar', ['-xzf', curl2], { cwd: dest }, function (err) {
 							if (err) { throw err; }
-							grunt.log.ok('Compiled ' + dest);
-							done();
+							grunt.log.ok('Extracted ' + dest);
+							execFile('make', { cwd: dest }, function (err) {
+								if (err) { throw err; }
+								grunt.log.ok('Compiled ' + dest);
+								done();
+							});
 						});
 					});
 				});
