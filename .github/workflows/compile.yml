@@ -2,10 +2,8 @@ name: Compile
 
 on:
   workflow_dispatch:
-
-# on:
-#   schedule:
-#     - cron: '20 1,13 * * *'
+  schedule:
+    - cron: '0 0 * * *'
 
 jobs:
 
@@ -30,12 +28,6 @@ jobs:
       - id: step1
         name: Check for updates
         run: echo "RESULT=$(npm run check --silent)" >> $GITHUB_OUTPUT
-
-      - uses: imba-tjd/rebase-upstream-action@master
-        if: steps.step1.outputs.RESULT == 'Update available'
-        with:
-          upstream: moment/moment-timezone
-          branch: develop
 
       - name: Update tzdata
         if: steps.step1.outputs.RESULT == 'Update available'
