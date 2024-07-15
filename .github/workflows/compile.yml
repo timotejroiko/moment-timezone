@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      actions: write
 
     steps:
       - uses: actions/checkout@v4
@@ -36,3 +37,6 @@ jobs:
       - name: Commit changes
         if: steps.step1.outputs.RESULT == 'Update available'
         uses: stefanzweifel/git-auto-commit-action@v5
+
+      - name: keepalive
+        uses: gautamkrishnar/keepalive-workflow@v2
