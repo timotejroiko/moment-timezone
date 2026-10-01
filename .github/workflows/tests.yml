@@ -1,15 +1,14 @@
 name: CI tests
 
 on:
+  push:
+    branches:
+      - master
+      - develop
+      - release*
+      - gtz
+  pull_request:
   workflow_dispatch:
-
-# on:
-#   push:
-#     branches:
-#       - master
-#       - develop
-#       - release*
-#   pull_request:
 
 jobs:
   test:
@@ -25,10 +24,10 @@ jobs:
           - lts/-2 # Probably EOL depending on release schedules, but still good to test
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v7
 
       - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node-version }}
           cache: npm
