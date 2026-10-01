@@ -31,7 +31,10 @@ function testYear(test, name, expected) {
 		offset = expected[i][3];
 		m      = moment(date).tz(name);
 		test.equal(m.format("HH:mm:ss"), time, date + ' should be ' + time + ' ' + abbr);
-		test.equal(getUTCOffset(m), -offset, date + ' should be ' + offset + ' minutes offset in ' + abbr);
+		// NOTE (GTZ fork): sub-minute historical offsets (e.g. LMT -0:04:52,
+		// generated as `-292 / 60`) can differ by 1 ulp from the runtime value
+		// after the base60 pack/unpack round-trip, so compare with tolerance.
+		test.ok(Math.abs(getUTCOffset(m) + offset) < 1e-9, date + ' should be ' + offset + ' minutes offset in ' + abbr);
 		test.equal(m.zoneAbbr(), abbr, date + ' should be ' + abbr);
 	}
 
